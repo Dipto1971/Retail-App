@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from models import arima_model, lstm_model, scaler
+from models import lstm_model, scaler
 from statsmodels.tsa.arima.model import ARIMA
 from sklearn.preprocessing import LabelEncoder
 import matplotlib.pyplot as plt
@@ -107,7 +107,7 @@ def run_hybrid_model(data):
             past_sales_df = past_sales_df.sort_index()  # Ensure chronological order
 
             # Fit ARIMA model on past sales
-            arima_model_local = ARIMA(past_sales_df['Units Sold'], order=(1,1,1)).fit()
+            arima_model_local = ARIMA(past_sales_df['Units Sold'], order=(0,0,0)).fit()
 
             # Forecast with ARIMA
             arima_forecast = arima_model_local.forecast(steps=1).iloc[0]

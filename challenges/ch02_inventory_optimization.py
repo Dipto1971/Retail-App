@@ -2,7 +2,8 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from models import ch02_xgboost_model# Import your pre-trained XGBoost model from models.py
+from models import ch02_xgboost_model
+# Import your pre-trained XGBoost model from models.py
 
 # Cache data loading for performance
 @st.cache_data
