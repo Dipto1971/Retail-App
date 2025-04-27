@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-from challenges import ch01_run_product_eda, ch03_clusturing_module, forecast_module, ch01_hybrid_model,  ch03_price_recommender
+from challenges import ch01_run_product_eda, ch02_forecast_module, ch03_clusturing_module, ch02_inventory_optimization, ch01_hybrid_model,  ch03_price_recommender
 
 # Cache data loading for performance
 @st.cache_data
@@ -27,8 +27,9 @@ if data.empty:
 # Sidebar navigation
 st.sidebar.title("Navigation")
 page = st.sidebar.selectbox("Choose a Section", 
-                           ["Home", "Challenge 1: EDA", "Challenge 1: Hybrid Model", 
-                            "Challenge 2: Forecasting", "Challenge 3: Clustering", "Challenge 3: Price Recommendation"])
+                            ["Home", "Challenge 1: EDA", "Challenge 1: Hybrid Model", 
+                             "Challenge 2: Forecasting", "Challenge 2: Inventory Optimization", 
+                             "Challenge 3: Clustering", "Challenge 3: Price Recommendation"])
 
 # Home Page
 if page == "Home":
@@ -51,8 +52,11 @@ elif page == "Challenge 1: Hybrid Model":
 
 # Challenge 2: Forecasting
 elif page == "Challenge 2: Forecasting":
-    forecast_module.run_demand_forecast_section(data)
-
+    ch02_forecast_module.run_demand_forecast_section(data)
+    
+elif page == "Challenge 2: Inventory Optimization":
+    ch02_inventory_optimization.run_inventory_optimization(data)
+    
 # Challenge 3: Clustering
 elif page == "Challenge 3: Clustering":
     ch03_clusturing_module.run_inventory_clustering(data)
